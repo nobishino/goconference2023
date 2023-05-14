@@ -16,16 +16,17 @@ func g() {
 	r1 := b
 	r2 := a
 	print(a, b)
-	if r1 == 1 && r2 == 0 { // これは起こりうるか？
-		panic("Answer: Yes")
+	if r1 == 1 && r2 == 0 { // これは発生しうるか？
+		panic("Answer: Yes") // 発生したらpanicしてプログラム終了
 	}
 }
 
+// 実験を1回行う関数
 func exec() {
-	a = 0
-	b = 0
+	a = 0 // グローバル変数aの初期化
+	b = 0 // グローバル変数bの初期化
 	wg.Add(2)
-	defer wg.Wait()
+	defer wg.Wait() // f, gの完了を待ち合わせる
 
 	go f()
 	go g()
