@@ -15,7 +15,6 @@ func g() {
 	defer wg.Done()
 	r1 := b
 	r2 := a
-	print(a, b)
 	if r1 == 1 && r2 == 0 { // これは発生しうるか？
 		panic("Answer: Yes") // 発生したらpanicしてプログラム終了
 	}
