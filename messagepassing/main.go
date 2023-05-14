@@ -16,15 +16,23 @@ func g() {
 	r1 := b
 	r2 := a
 	print(a, b)
-	if r1 == 1 && r2 == 0 {
-		panic("Answer: No!")
+	if r1 == 1 && r2 == 0 { // これは起こりうるか？
+		panic("Answer: Yes")
 	}
 }
 
-func main() {
+func exec() {
+	a = 0
+	b = 0
 	wg.Add(2)
 	defer wg.Wait()
 
 	go f()
 	go g()
+}
+
+func main() {
+	for {
+		exec()
+	}
 }
