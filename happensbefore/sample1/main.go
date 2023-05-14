@@ -13,8 +13,8 @@ func main() {
 	}()
 	go func() {
 		a = 2
+		print(a)
 		wg.Done()
 	}()
 	wg.Wait()
-	print(a)
 }
