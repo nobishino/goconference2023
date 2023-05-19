@@ -1,14 +1,20 @@
 # よくわかるThe Go Memory Model 用語集
 
+Go Conference 2023の発表「[よくわかるThe Go Memory Model](https://docs.google.com/presentation/d/1UjL5jTqreNrFpulVi6l_H5vY_Bcz9jQriL65gZs1zFM/edit?usp=sharing)」の用語集です。
+
 ## 逐次一貫モデル
 
 大雑把には、次のことを意味します。
 
 > あるプログラムが「逐次一貫モデルに従う」とは、そのプログラムの実行結果が、「全ての演算を何らかの方法で一列に並べて、その通りの順序で演算を実行していった結果として説明できる」ということです。ただし、その順序は、同一のgoroutineで行われる演算については、プログラムに書かれた順序を逆転させてはいけません。
 
-より厳密には、次のことを意味します。
+The Go Memory Modelでは次の表現で説明されていますが、同じ意味です。
 
-(TBW)
+> behave as if all the goroutines were multiplexed onto a single processor.
+>
+> 全てのゴルーチンが一つのプロセッサーの上に多重化されたかのように振る舞う
+
+
 
 ## メモリー演算
 
@@ -35,6 +41,8 @@ ch<-struct{}{}
 ## concurrent(並行)
 
 プログラムの2つの演算がconcurrent(並行)であるとは、a happens before bが成り立たず、かつ、b happens before aも成り立たないことを言います。
+
+## 観測可能性
 
 ## data race
 

@@ -11,7 +11,7 @@ var wg sync.WaitGroup
 func f() {
 	defer wg.Done()
 	a.Store(1)
-	b.Store(2)
+	b.Store(1)
 }
 
 func g() {
