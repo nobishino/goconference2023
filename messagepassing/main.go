@@ -2,7 +2,7 @@ package main
 
 import "sync"
 
-var a, b int
+var a, b int64
 var wg sync.WaitGroup
 
 func f() {
