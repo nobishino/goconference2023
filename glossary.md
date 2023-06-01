@@ -46,11 +46,21 @@ ch<-struct{}{}
 
 ## happens-before関係
 
+2つの演算の間の順序関係で、`<` `>`を使って表せます。ただし、`a < b` も `b > a`も成り立たない場合があります。
+
+- 同一goroutineの演算同士は、プログラムに書かれた順番通りにhappens-before関係が成り立ちます。
+- 異なるgoroutineの演算同士は、所定の同期演算のペアになっている場合にだけhappens-before関係が成り立ちます。
+
 ## concurrent(並行)
 
 プログラムの2つの演算がconcurrent(並行)であるとは、a happens before bが成り立たず、かつ、b happens before aも成り立たないことを言います。
 
 ## 観測可能性
+
+あるread演算`r`が書き込み演算`w`を観測可能なのは、次のいずれかが成り立つときです。
+
+- `w < r`であり、`w`とは別な書き込み演算`w`であって`w < w' < r`を満たすものが存在しない
+- `w`と`r`が並行である
 
 ## data race
 
